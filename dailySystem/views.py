@@ -40,28 +40,38 @@ def get_data_summary():
     # print(list)
     return list
 
+#经办人
+# def get_data_assignee():
+#     list = []
+#     jql2 = 'component in (招聘-商业, 招聘-基础, 招聘-会员, B-profile) AND status in ("IN TEST") AND created >= 2020-11-06 AND created <=now() ORDER BY component DESC, status DESC '
+#     issues2 = searchIssues(jql2)
+#     for issue in issues2:
+#         data = ('{0}'.format(issue.fields.assignee))
+#         list.append(data)
+#     # print(list)
+#     return list
+#
+# 报告人
+# def get_data_reporter():
+#     list = []
+#     jql2 = 'component in (招聘-商业, 招聘-基础, 招聘-会员, B-profile) AND status in ("IN TEST") AND created >= 2020-11-06 AND created <=now() ORDER BY component DESC, status DESC '
+#     issues2 = searchIssues(jql2)
+#     for issue in issues2:
+#         data = ('{0}'.format(issue.fields.reporter))
+#         list.append(data)
+#     # print(list)
+#     return list
 
-def get_data_assignee():
+#用需求中的提测人获取RD的相关信息
+def get_data_RD():
     list = []
     jql2 = 'component in (招聘-商业, 招聘-基础, 招聘-会员, B-profile) AND status in ("IN TEST") AND created >= 2020-11-06 AND created <=now() ORDER BY component DESC, status DESC '
     issues2 = searchIssues(jql2)
     for issue in issues2:
-        data = ('{0}'.format(issue.fields.assignee))
+        data = ('{0}'.format(issue.fields.customfield_10503))
         list.append(data)
     # print(list)
     return list
-
-
-def get_data_reporter():
-    list = []
-    jql2 = 'component in (招聘-商业, 招聘-基础, 招聘-会员, B-profile) AND status in ("IN TEST") AND created >= 2020-11-06 AND created <=now() ORDER BY component DESC, status DESC '
-    issues2 = searchIssues(jql2)
-    for issue in issues2:
-        data = ('{0}'.format(issue.fields.reporter))
-        list.append(data)
-    # print(list)
-    return list
-
 
 def get_data_QA():
     list = []
@@ -169,8 +179,9 @@ def get_all_data():
         if i <len(get_data_key()):
             list.append(get_data_key()[i])
             list.append(get_data_summary()[i])
-            list.append(get_data_assignee()[i])
-            list.append(get_data_reporter()[i])
+            # list.append(get_data_assignee()[i])
+            # list.append(get_data_reporter()[i])
+            list.append(get_data_RD()[i])
             list.append(get_data_QA()[i])
             list.append(get_data_PM()[i])
             list.append(get_all_bug(get_data_response_text(get_data_key()[i])))
@@ -186,7 +197,7 @@ def get_all_data():
 def data_grouping():
     list=[]
     t=get_all_data()
-    step = 10
+    step = 9
     b = [t[i:i + step] for i in range(0, len(t), step)]
     for x in b:
         list.append(x)
@@ -195,7 +206,7 @@ def data_grouping():
 
 def get_all_result(request):
     list=[]
-    list1=["需求的key", "需求的描述", "经办人", "报告人", "QA", "产品", "全部bug", "未解决的bug", "未验证的bug", "jira地址"]
+    list1=["需求的key", "需求的描述", "RD", "QA", "产品", "全部bug", "未解决的bug", "未验证的bug", "jira地址"]
     list2=data_grouping()
     for i in range(len(list2)):
         d = {}

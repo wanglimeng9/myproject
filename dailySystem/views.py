@@ -228,6 +228,6 @@ def get_all_result(request):
 
 
 
-# if __name__ == '__main__':
-#     print(get_all_result())
+if __name__ == '__main__':
+    print(get_all_result())
 

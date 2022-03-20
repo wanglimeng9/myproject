@@ -227,7 +227,8 @@ def get_all_result(request):
     # return Response(dict1)
 
 ### 1.添加一些备注，测试自动化构建是成功
-####2.1.添加一些备注，测试自动化构建是成功
+####2.添加一些备注，测试自动化构建是成功
+#######333333
 
 if __name__ == '__main__':
     print(get_all_result())

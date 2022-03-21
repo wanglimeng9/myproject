@@ -226,7 +226,7 @@ def get_all_result(request):
     # dict1["result"] = "success"
     # return Response(dict1)
 
-### 1.添加一些备注，测试自动化构建是成功
+
 
 
 if __name__ == '__main__':

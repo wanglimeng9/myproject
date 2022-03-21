@@ -226,7 +226,6 @@ def get_all_result(request):
     # dict1["result"] = "success"
     # return Response(dict1)
 
-#uuuuuuu
 
 
 if __name__ == '__main__':

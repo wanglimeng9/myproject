@@ -1,11 +1,33 @@
+// pipeline {
+//     agent any
+//     stages {
+//         stage('Stag1') {
+//             steps {
+//                     echo 'hello world xiaowang1234567'
+//             }
+//         }
+//     }
+// }
+
+
 pipeline {
     agent any
     stages {
-        stage('Stag1') {
+        stage('Build') {
             steps {
-                    echo 'hello world xiaowang1234567'
+                println "Build"
+            }
+        }
+        stage('Test') {
+            steps {
+                println "Test"
+            }
+        }
+        stage('Deploy') {
+            steps {
+                println "Deploy"
             }
         }
     }
-}
+
 

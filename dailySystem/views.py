@@ -226,11 +226,6 @@ def get_all_result(request):
     # dict1["result"] = "success"
     # return Response(dict1)
 
-###tanassddssd999999
-##########测试测试####
-###tanassddssd999999
-##########测试测试#### ###tanassddssd999999
-##########测试测试####
 
 if __name__ == '__main__':
     print(get_all_result())
